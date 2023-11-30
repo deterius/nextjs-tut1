@@ -4,10 +4,13 @@ services:
     build: .
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
 
   json-server:
-    build:
-      context: .
-      dockerfile: Dockerfile.json-server
+    image: node:latest
+    volumes:
+      - ./_data/db.json:/data/db.json
+    command: npx json-server --watch /data/db.json --port 4000
     ports:
       - "4000:4000"
