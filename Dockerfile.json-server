@@ -1,0 +1,10 @@
+FROM node:latest
+
+RUN npm install -g json-server
+
+WORKDIR /data
+COPY ./_data/db.json /data/db.json
+
+EXPOSE 4000
+
+CMD ["json-server", "--watch", "db.json", "--port", "4000"]
