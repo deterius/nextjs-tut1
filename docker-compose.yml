@@ -11,6 +11,6 @@ services:
     image: node:latest
     volumes:
       - ./_data/db.json:/data/db.json
-    command: npx json-server --watch /data/db.json --port 4000
+    command: npx json-server --watch /data/db.json --port 4000 --middlewares ./middleware.js
     ports:
       - "4000:4000"

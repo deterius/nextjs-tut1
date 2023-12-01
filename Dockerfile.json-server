@@ -4,7 +4,8 @@ RUN npm install -g json-server
 
 WORKDIR /data
 COPY ./_data/db.json /data/db.json
+COPY ./middleware.js /data/middleware.js  
 
 EXPOSE 4000
 
-CMD ["json-server", "--watch", "db.json", "--port", "4000"]
+CMD ["json-server", "--watch", "db.json", "--port", "4000", "--middlewares", "/data/middleware.js"]
